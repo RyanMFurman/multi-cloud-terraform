@@ -1,46 +1,161 @@
-# multi-cloud-terraform
+# 🌐 Multi-Cloud Terraform Infrastructure
 
-This repository contains Terraform code and configurations to manage infrastructure across multiple cloud providers, including AWS and Google Cloud Platform (GCP).
+This repository is designed to help you provision and manage infrastructure across **multiple cloud providers** — specifically **AWS** and **Google Cloud Platform (GCP)** — using [Terraform](https://www.terraform.io/). It's perfect for developers, DevOps engineers, and cloud architects looking for repeatable, version-controlled infrastructure-as-code (IaC).
 
-## Features
+---
 
-- Multi-cloud support (AWS, GCP)
-- Modular Terraform configurations
-- Infrastructure-as-Code for provisioning cloud resources
-- Secure management using `.gitignore` to exclude sensitive files
+## 📁 Project Structure
 
-## Getting Started
+multi-cloud-terraform/
+├── aws/                     # AWS-specific Terraform modules
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+├── gcp/                     # GCP-specific Terraform modules
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+├── environments/            # Environment-specific configurations (dev, prod, etc.)
+│   └── dev/
+│       ├── main.tf
+│       ├── provider.tf
+│       ├── terraform.tfvars
+│       └── backend.tf
+├── .gitignore
+├── README.md
+└── terraform.tfvars.example
 
-### Prerequisites
+---
 
-- Terraform installed (version X.X or higher)
-- AWS CLI configured (for AWS deployments)
-- GCP SDK configured (for Google Cloud deployments)
+## ✅ Features
 
-### Usage
+- ✅ Multi-Cloud Infrastructure: Provision and manage resources on AWS and GCP.
+- ✅ Modular Design: Easily reuse and extend cloud modules.
+- ✅ Environment Support: Supports multiple environments (e.g., dev, staging, prod).
+- ✅ State Management: Remote backends configured for shared state.
+- ✅ Secrets/Sensitive Files Ignored: Uses `.gitignore` to protect credentials and state files.
 
-1. Clone the repository:
-   git clone https://github.com/RyanMFurman/multi-cloud-terraform.git
-   cd multi-cloud-terraform
+---
 
-2. Initialize Terraform:
-   terraform init
+## 🔧 Prerequisites
 
-3. Review the configuration files and update variables as needed.
+Before you get started, you need to have the following tools installed:
 
-4. Plan your infrastructure changes:
-   terraform plan
+- Terraform: https://www.terraform.io/downloads.html
+- AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+- Google Cloud SDK: https://cloud.google.com/sdk/docs/install
+- Configured credentials for both AWS and GCP:
+  - AWS: `aws configure`
+  - GCP: `gcloud auth application-default login`
 
-5. Apply the changes:
-   terraform apply
+---
 
-## .gitignore
+## 🚀 Quick Start Guide
 
-Sensitive files such as Terraform state files, logs, and provider credentials are excluded from this repository by the `.gitignore` file.
+### 1. Clone the Repository
 
-## Contributing
+```bash
+git clone https://github.com/RyanMFurman/multi-cloud-terraform.git
+cd multi-cloud-terraform
+```
 
-Contributions are welcome! Please open issues or submit pull requests for improvements.
+### 2. Set Up Environment Variables or `.tfvars`
+
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
+
+Edit `terraform.tfvars` with your values:
+
+```hcl
+aws_region = "us-west-2"
+gcp_project_id = "your-gcp-project-id"
+gcp_region = "us-central1"
+```
+
+### 3. Navigate to Environment
+
+```bash
+cd environments/dev
+```
+
+### 4. Initialize Terraform
+
+```bash
+terraform init
+```
+
+### 5. Preview Changes
+
+```bash
+terraform plan
+```
+
+### 6. Apply Changes
+
+```bash
+terraform apply
+```
+
+### 7. Destroy Resources (when needed)
+
+```bash
+terraform destroy
+```
+
+---
+
+## 📂 Customize Resources
+
+Add or edit resources in `aws/main.tf` or `gcp/main.tf`. Then rerun:
+
+```bash
+terraform plan
+terraform apply
+```
+
+---
+
+## 🔐 Security
+
+`.gitignore` protects secrets and Terraform state:
+
+```
+.terraform/
+*.tfstate
+*.tfvars
+*.tfplan
+```
+
+Never commit secret files or keys.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. Submit improvements or new cloud modules!
+
+---
+
+## 📝 License
+
+MIT License
+
+---
+
+## 📬 Contact
+
+Ryan Furman  
+rfurman3803@gmail.com  
+https://github.com/RyanMFurman
+
+---
+
+## 💡 Future Enhancements
+
+- [ ] Add Azure cloud support
+- [ ] Include CI/CD for Terraform with GitHub Actions
+- [ ] Add cost estimation tools
 
 ## License
 
