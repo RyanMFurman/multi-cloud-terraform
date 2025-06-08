@@ -4,29 +4,6 @@ This repository is designed to help you provision and manage infrastructure acro
 
 ---
 
-## 📁 Project Structure
-
-multi-cloud-terraform/
-├── aws/                     # AWS-specific Terraform modules
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
-├── gcp/                     # GCP-specific Terraform modules
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
-├── environments/            # Environment-specific configurations (dev, prod, etc.)
-│   └── dev/
-│       ├── main.tf
-│       ├── provider.tf
-│       ├── terraform.tfvars
-│       └── backend.tf
-├── .gitignore
-├── README.md
-└── terraform.tfvars.example
-
----
-
 ## ✅ Features
 
 - ✅ Multi-Cloud Infrastructure: Provision and manage resources on AWS and GCP.
