@@ -1,25 +1,12 @@
-resource "aws_instance" "aws_vm" {
-  ami           = "ami-0c94855ba95c71c99" # Amazon Linux 2 (us-east-1)
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "AWS_VM"
-  }
+module "aws" {
+  source          = "./aws"
+  aws_region      = var.aws_region
+  aws_access_key  = var.aws_access_key
+  aws_secret_key  = var.aws_secret_key
 }
 
-resource "google_compute_instance" "gcp_vm" {
-  name         = "gvp-vm"
-  machine_type = "e2-micro"
-  zone         = "us-central1-a"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    network       = "default"
-    access_config {} # Required to give it a public IP
-  }
+module "gcp" {
+  source               = "./gcp"
+  gcp_project_id       = var.gcp_project_id
+  gcp_credentials_file = var.gcp_credentials_file
 }
