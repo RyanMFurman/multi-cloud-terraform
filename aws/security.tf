@@ -32,6 +32,6 @@ resource "aws_security_group" "vm_sg" {
   }
 
   tags = {
-    Name = vm_security_group
+    Name = "vm_security_group"
   }
 }
