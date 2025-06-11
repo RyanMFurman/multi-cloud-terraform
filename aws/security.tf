@@ -10,7 +10,7 @@ resource "aws_security_group" "vm_sg" {
     from_port =  22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks = [ "192.168.1.231/32" ]
+    cidr_blocks = [ "0.0.0.0/32" ] #fill with personal IP
   }
 
 #create incoming HTTP rules
