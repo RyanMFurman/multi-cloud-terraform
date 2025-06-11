@@ -9,7 +9,7 @@ resource "aws_security_group" "vm_sg" {
     description = "SSH access"
     from_port =  22
     to_port = 22
-    protocol = "SSH"
+    protocol = "tcp"
     cidr_blocks = [ "192.168.1.231/32" ]
   }
 
