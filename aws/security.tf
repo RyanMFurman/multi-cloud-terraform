@@ -4,7 +4,16 @@ resource "aws_security_group" "vm_sg" {
   description = "Allow SSH and HTTP access"
   vpc_id = aws_vpc.main.id
 
-#create incoming rules
+#create incoming SSH rules
+  ingress {
+    description = "SSH access"
+    from_port =  22
+    to_port = 22
+    protocol = "SSH"
+    cidr_blocks = [ "192.168.1.231/24" ]
+  }
+
+#create incoming HTTP rules
   ingress {
     description = "HTTP access"
     from_port =  80
@@ -23,6 +32,6 @@ resource "aws_security_group" "vm_sg" {
   }
 
   tags = {
-    Name = "vm_security_group"
+    Name = vm_security_group
   }
 }
