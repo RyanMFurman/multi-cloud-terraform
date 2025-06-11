@@ -10,7 +10,7 @@ resource "aws_security_group" "vm_sg" {
     from_port =  22
     to_port = 22
     protocol = "SSH"
-    cidr_blocks = [ "192.168.1.231/24" ]
+    cidr_blocks = [ "192.168.1.231/32" ]
   }
 
 #create incoming HTTP rules
